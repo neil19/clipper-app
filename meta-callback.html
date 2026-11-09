@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <title>Clipper · Conectando</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main>
+  <section class="card">
+    <h1>Volviendo a Clipper…</h1>
+    <p>Facebook terminó el inicio de sesión. Esta página devuelve el resultado a Clipper, que está abierto en tu computadora.</p>
+    <p id="manual" hidden>Si no pasa nada, <a id="back" href="#">pulsa aquí</a>.</p>
+  </section>
+</main>
+<script>
+  // Hands Facebook's answer (code and state in the query) to Clipper's local listener on this computer.
+  // Nothing is stored or sent anywhere else.
+  (function () {
+    var target = "http://127.0.0.1:8719/meta/callback" + window.location.search;
+    document.getElementById("back").href = target;
+    document.getElementById("manual").hidden = false;
+    window.location.replace(target);
+  })();
+</script>
+</body>
+</html>
